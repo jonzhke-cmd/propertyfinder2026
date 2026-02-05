@@ -43,6 +43,8 @@ h1 {
     color: #34495e;
 }
 
+.input-section input[type="date"],
+.input-section select,
 .input-section input[type="text"],
 .input-section textarea {
     width: calc(100% - 20px); /* Adjust for padding */
@@ -52,6 +54,15 @@ h1 {
     border-radius: 5px;
     font-size: 1em;
     box-sizing: border-box; /* Include padding in width */
+    -webkit-appearance: none; /* Remove default browser styling for selects */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff; /* Ensure background is white for selects */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H18.6c-5%200-9.3%201.8-13.6%206.4-4.2%204.6-6.4%2010.5-6.4%2016.6%200%206.1%202.2%2011.9%206.4%2016.6l127.9%20127.9c4.2%204.6%2010%206.4%2016.6%206.4s12.4-2.2%2016.6-6.4L287%20102.6c4.2-4.6%206.4-10.5%206.4-16.6%200-6.1-2.2-11.9-6.4-16.6z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Space for the arrow */
 }
 
 .input-section textarea {
@@ -83,7 +94,8 @@ h1 {
     padding-top: 30px;
 }
 
-.recommendations-section h2 {
+.recommendations-section h2,
+.reviews-section h2 { /* Apply common styles to both section headings */
     color: #2c3e50;
     text-align: center;
     margin-bottom: 20px;
@@ -107,3 +119,118 @@ h1 {
 #recommendationsOutput li {
     margin-bottom: 8px;
 }
+
+.reviews-section {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.review-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.review-item h3 {
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.review-author {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.review-item p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* TODO List Styles */
+.todo-section {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.todo-section h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+#todoInput {
+    width: calc(100% - 100px - 20px); /* Adjust for button width and padding */
+    padding: 12px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#addTodoBtn {
+    width: 90px;
+    padding: 12px;
+    background-color: #28a745; /* Green color for add button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addTodoBtn:hover {
+    background-color: #218838;
+}
+
+#todoList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#todoList li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    color: #34495e;
+}
+
+#todoList li.completed {
+    text-decoration: line-through;
+    color: #7f8c8d;
+    background-color: #ecf0f1;
+}
+
+#todoList li button {
+    background-color: #dc3545; /* Red color for remove button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#todoList li button:hover {
+    background-color: #c82333;
+}
+

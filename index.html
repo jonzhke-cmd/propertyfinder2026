@@ -12,11 +12,32 @@
         <img src="https://via.placeholder.com/600x200?text=Korea+Travel" alt="Korea Travel Placeholder" class="hero-image">
 
         <div class="input-section">
-            <label for="travelDates">Travel Dates:</label>
-            <input type="text" id="travelDates" placeholder="e.g., May 10 - May 17">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate">
 
-            <label for="travelTime">Duration / Time:</label>
-            <input type="text" id="travelTime" placeholder="e.g., 7 days, Morning/Evening">
+            <label for="duration">Duration (days):</label>
+            <select id="duration">
+                <option value="">Select Duration</option>
+                <option value="1">1 day</option>
+                <option value="2">2 days</option>
+                <option value="3">3 days</option>
+                <option value="4">4 days</option>
+                <option value="5">5 days</option>
+                <option value="6">6 days</option>
+                <option value="7">7 days</option>
+                <option value="8">8 days</option>
+                <option value="9">9 days</option>
+                <option value="10">10 days</option>
+            </select>
+
+            <label for="timeOfDay">Preferred Time of Day:</label>
+            <select id="timeOfDay">
+                <option value="">Select Time</option>
+                <option value="morning">Morning (9am-12pm)</option>
+                <option value="afternoon">Afternoon (12pm-5pm)</option>
+                <option value="evening">Evening (5pm-9pm)</option>
+                <option value="anytime">Anytime</option>
+            </select>
 
             <label for="travelPreferences">Travel Preferences:</label>
             <textarea id="travelPreferences" rows="5" placeholder="e.g., I love historical sites and trying local food, also looking for some nightlife."></textarea>
@@ -28,6 +49,33 @@
             <h2>Our Recommendations:</h2>
             <div id="recommendationsOutput">
                 <p>Enter your details above and click 'Get Recommendations'!</p>
+            </div>
+        </div>
+
+        <div class="todo-section">
+            <h2>My TODO List</h2>
+            <input type="text" id="todoInput" placeholder="Add a new todo...">
+            <button id="addTodoBtn">Add Todo</button>
+            <ul id="todoList">
+            </ul>
+        </div>
+
+        <div class="reviews-section">
+            <h2>Traveler Reviews</h2>
+            <div class="review-item">
+                <h3>"Amazing Trip to Seoul!"</h3>
+                <p class="review-author">- Jane Doe</p>
+                <p>The travel agent helped me discover hidden gems and delicious local eateries. Highly recommend for anyone planning a trip to Korea!</p>
+            </div>
+            <div class="review-item">
+                <h3>"Jeju Island Adventure"</h3>
+                <p class="review-author">- John Smith</p>
+                <p>Loved the nature recommendations. Jeju Island was breathtaking. The agent understood my preferences perfectly.</p>
+            </div>
+            <div class="review-item">
+                <h3>"Seamless Planning"</h3>
+                <p class="review-author">- Alice Brown</p>
+                <p>Very easy to use and gave great ideas for my historical tour. Saved me a lot of research time.</p>
             </div>
         </div>
     </div>

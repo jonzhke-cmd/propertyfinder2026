@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const getRecommendationsBtn = document.getElementById('getRecommendations');
-    const travelDatesInput = document.getElementById('travelDates');
-    const travelTimeInput = document.getElementById('travelTime');
+    const startDateInput = document.getElementById('startDate');
+    const durationSelect = document.getElementById('duration');
+    const timeOfDaySelect = document.getElementById('timeOfDay');
     const travelPreferencesInput = document.getElementById('travelPreferences');
     const recommendationsOutput = document.getElementById('recommendationsOutput');
 
     getRecommendationsBtn.addEventListener('click', () => {
-        const dates = travelDatesInput.value.toLowerCase();
-        const time = travelTimeInput.value.toLowerCase();
+        const startDate = startDateInput.value;
+        const duration = durationSelect.value;
+        const timeOfDay = timeOfDaySelect.value;
         const preferences = travelPreferencesInput.value.toLowerCase();
 
         let recommendations = [];
@@ -61,6 +63,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         outputHtml += '</ul>';
 
+        // Optionally, display selected duration and time for testing
+        // outputHtml += `<p>Selected Duration: ${duration} days</p>`;
+        // outputHtml += `<p>Preferred Time: ${timeOfDay}</p>`;
+
         recommendationsOutput.innerHTML = outputHtml;
+    });
+
+    // TODO List functionality
+    const todoInput = document.getElementById('todoInput');
+    const addTodoBtn = document.getElementById('addTodoBtn');
+    const todoList = document.getElementById('todoList');
+
+    // Function to add a new todo item
+    const addTodoItem = () => {
+        const todoText = todoInput.value.trim();
+
+        if (todoText !== '') {
+            const listItem = document.createElement('li');
+            listItem.className = 'todo-item'; // Add a class for styling
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = todoText;
+            textSpan.addEventListener('click', () => {
+                listItem.classList.toggle('completed');
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Remove';
+            deleteButton.addEventListener('click', () => {
+                todoList.removeChild(listItem);
+            });
+
+            listItem.appendChild(textSpan);
+            listItem.appendChild(deleteButton);
+            todoList.appendChild(listItem);
+
+            todoInput.value = ''; // Clear input field
+        }
+    };
+
+    // Event listener for adding a todo
+    addTodoBtn.addEventListener('click', addTodoItem);
+
+    // Allow adding todo with Enter key
+    todoInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            addTodoItem();
+        }
     });
 });
