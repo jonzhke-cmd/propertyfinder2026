@@ -94,19 +94,23 @@ body.dark-mode .generate-btn:hover {
 }
 
 .mode-toggle {
-    position: absolute; /* Added for positioning */
-    top: 20px; /* Added for positioning */
-    right: 20px; /* Added for positioning */
+    position: absolute;
+    top: 20px;
+    right: 20px;
     background: #f1c40f;
     color: #333;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Adjusted padding for icon */
     font-size: 16px;
-    border-radius: 25px;
+    border-radius: 50%; /* Make it circular */
+    width: 45px; /* Fixed width for circular button */
+    height: 45px; /* Fixed height for circular button */
+    display: flex; /* Use flexbox to center icon */
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     outline: none;
     transition: background 0.3s ease, color 0.5s ease;
-    /* margin-bottom: 20px; Removed as it's absolutely positioned */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -121,4 +125,14 @@ body.dark-mode .mode-toggle {
 
 body.dark-mode .mode-toggle:hover {
     background: #9b59b6;
+}
+
+.mode-icon {
+    width: 24px; /* Icon size */
+    height: 24px; /* Icon size */
+    color: inherit; /* Inherit color from button */
+}
+
+.hidden {
+    display: none;
 }

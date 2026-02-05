@@ -1,13 +1,19 @@
 const generateBtn = document.getElementById('generate-btn');
 const numbersDisplay = document.getElementById('numbers-display');
 const modeToggle = document.getElementById('mode-toggle');
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
 
 // Function to set the theme
 function setTheme(isDarkMode) {
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
     } else {
         document.body.classList.remove('dark-mode');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
     }
     localStorage.setItem('darkMode', isDarkMode);
 }
