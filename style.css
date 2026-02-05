@@ -2,235 +2,123 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    background-color: #f4f7f6;
-    color: #333;
-    padding: 20px; /* Add some padding around the content */
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    transition: background 0.5s ease;
+}
+
+body.dark-mode {
+    background: linear-gradient(45deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
 }
 
 .container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 800px; /* Max width for better readability */
-    width: 100%;
-    margin-top: 20px; /* Push content down a bit from the top */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+body.dark-mode .container {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    text-align: center;
-    color: #2c3e50;
+    color: #fff;
     margin-bottom: 30px;
-    font-size: 2.2em;
+    transition: color 0.5s ease;
 }
 
-.hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    display: block; /* Ensures it takes up full width and allows margin-bottom */
+body.dark-mode h1 {
+    color: #ecf0f1;
 }
 
-.input-section label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #34495e;
-}
-
-.input-section input[type="date"],
-.input-section select,
-.input-section input[type="text"],
-.input-section textarea {
-    width: calc(100% - 20px); /* Adjust for padding */
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box; /* Include padding in width */
-    -webkit-appearance: none; /* Remove default browser styling for selects */
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #fff; /* Ensure background is white for selects */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H18.6c-5%200-9.3%201.8-13.6%206.4-4.2%204.6-6.4%2010.5-6.4%2016.6%200%206.1%202.2%2011.9%206.4%2016.6l127.9%20127.9c4.2%204.6%2010%206.4%2016.6%206.4s12.4-2.2%2016.6-6.4L287%20102.6c4.2-4.6%206.4-10.5%206.4-16.6%200-6.1-2.2-11.9-6.4-16.6z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    padding-right: 30px; /* Space for the arrow */
-}
-
-.input-section textarea {
-    resize: vertical; /* Allow vertical resizing */
-    min-height: 100px;
-}
-
-.input-section button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.input-section button:hover {
-    background-color: #2980b9;
-}
-
-.recommendations-section {
-    margin-top: 40px;
-    border-top: 1px solid #eee;
-    padding-top: 30px;
-}
-
-.recommendations-section h2,
-.reviews-section h2 { /* Apply common styles to both section headings */
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-}
-
-#recommendationsOutput {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 5px;
-    min-height: 100px;
-    line-height: 1.6;
-    color: #34495e;
-}
-
-#recommendationsOutput ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-#recommendationsOutput li {
-    margin-bottom: 8px;
-}
-
-.reviews-section {
-    margin-top: 40px;
-    border-top: 1px solid #eee;
-    padding-top: 30px;
-}
-
-.review-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.review-item h3 {
-    color: #34495e;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.3em;
-}
-
-.review-author {
-    font-style: italic;
-    color: #7f8c8d;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.review-item p {
-    line-height: 1.6;
-    color: #555;
-}
-
-/* TODO List Styles */
-.todo-section {
-    margin-top: 40px;
-    border-top: 1px solid #eee;
-    padding-top: 30px;
-}
-
-.todo-section h2 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-}
-
-#todoInput {
-    width: calc(100% - 100px - 20px); /* Adjust for button width and padding */
-    padding: 12px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-#addTodoBtn {
-    width: 90px;
-    padding: 12px;
-    background-color: #28a745; /* Green color for add button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#addTodoBtn:hover {
-    background-color: #218838;
-}
-
-#todoList {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-#todoList li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 12px 15px;
-    margin-bottom: 10px;
+.numbers-display {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: 1.1em;
-    color: #34495e;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-#todoList li.completed {
-    text-decoration: line-through;
-    color: #7f8c8d;
-    background-color: #ecf0f1;
+body.dark-mode .number {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-#todoList li button {
-    background-color: #dc3545; /* Red color for remove button */
-    color: white;
+.generate-btn {
+    background: #ff9a9e;
+    color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    outline: none;
+    transition: background 0.3s ease, color 0.5s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-#todoList li button:hover {
-    background-color: #c82333;
+.generate-btn:hover {
+    background: #e68a8e;
 }
 
+body.dark-mode .generate-btn {
+    background: #3498db;
+}
+
+body.dark-mode .generate-btn:hover {
+    background: #2980b9;
+}
+
+.mode-toggle {
+    position: absolute; /* Added for positioning */
+    top: 20px; /* Added for positioning */
+    right: 20px; /* Added for positioning */
+    background: #f1c40f;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s ease, color 0.5s ease;
+    /* margin-bottom: 20px; Removed as it's absolutely positioned */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mode-toggle:hover {
+    background: #f39c12;
+}
+
+body.dark-mode .mode-toggle {
+    background: #8e44ad;
+    color: #fff;
+}
+
+body.dark-mode .mode-toggle:hover {
+    background: #9b59b6;
+}
