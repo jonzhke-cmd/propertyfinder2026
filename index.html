@@ -3,18 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO Generator</title>
+    <title>Singapore Property Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>TOTO Number Generator</h1>
-        <button id="mode-toggle" class="mode-toggle">
-            <svg id="sun-icon" class="mode-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.459 4.653a1 1 0 00.707 1.414l.823.411a1 1 0 001.113-.471 1 1 0 00-.471-1.113l-.823-.411a1 1 0 00-1.414.707zm-4.43-9.653a1 1 0 00.707 1.414l.823.411a1 1 0 001.113-.471 1 1 0 00-.471-1.113l-.823-.411a1 1 0 00-1.414.707zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-13 0a1 1 0 100-2H3a1 1 0 100 2h1zm12.954-4.243a1 1 0 00-1.414-1.414l-.823.411a1 1 0 00-.471 1.113 1 1 0 001.113.471l.823-.411zM7.046 16.243a1 1 0 00-1.414-1.414l-.823.411a1 1 0 00-.471 1.113 1 1 0 001.113.471l.823-.411zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm14 0a1 1 0 01-1-1h-1a1 1 0 110 2h1a1 1 0 011-1z"></path></svg>
-            <svg id="moon-icon" class="mode-icon hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-        </button>
-        <div id="numbers-display" class="numbers-display"></div>
-        <button id="generate-btn" class="generate-btn">Generate Numbers</button>
+        <header>
+            <h1>Singapore Property Finder</h1>
+            <p>New Launches in 2026</p>
+            <img src="https://via.placeholder.com/1160x250.png?text=Beautiful+Singapore+Property" alt="Singapore Property Header Image" class="header-image">
+            <button id="mode-toggle" class="mode-toggle">
+                <svg id="sun-icon" class="mode-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.459 4.653a1 1 0 00.707 1.414l.823.411a1 1 0 001.113-.471 1 1 0 00-.471-1.113l-.823-.411a1 1 0 00-1.414.707zm-4.43-9.653a1 1 0 00.707 1.414l.823.411a1 1 0 001.113-.471 1 1 0 00-.471-1.113l-.823-.411a1 1 0 00-1.414.707zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-13 0a1 1 0 100-2H3a1 1 0 100 2h1zm12.954-4.243a1 1 0 00-1.414-1.414l-.823.411a1 1 0 00-.471 1.113 1 1 0 001.113.471l.823-.411zM7.046 16.243a1 1 0 00-1.414-1.414l-.823.411a1 1 0 00-.471 1.113 1 1 0 001.113.471l.823-.411zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm14 0a1 1 0 01-1-1h-1a1 1 0 110 2h1a1 1 0 011-1z"></path></svg>
+                <svg id="moon-icon" class="mode-icon hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            </button>
+        </header>
+        <div class="filters">
+            <input type="text" id="search-input" placeholder="Search by name or district...">
+            <select id="price-range-select">
+                <option value="">All Prices</option>
+                <option value="0-1000000">$0 - $1,000,000</option>
+                <option value="1000000-2000000">$1,000,000 - $2,000,000</option>
+                <option value="2000000-3000000">$2,000,000 - $3,000,000</option>
+                <option value="3000000+">$3,000,000+</option>
+            </select>
+            <select id="bedrooms-select">
+                <option value="">All Bedrooms</option>
+                <option value="1">1 Bedroom</option>
+                <option value="2">2 Bedrooms</option>
+                <option value="3">3 Bedrooms</option>
+                <option value="4">4+ Bedrooms</option>
+            </select>
+        </div>
+        <div id="property-listings" class="property-listings">
+            <!-- Property cards will be injected here by JavaScript -->
+        </div>
+
+        <section class="transactions-section">
+            <h2>Recently Transacted Prices</h2>
+            <div id="transactions-list" class="transactions-list">
+                <!-- Transaction items will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <section class="advertisements-section">
+            <h2>Advertisements</h2>
+            <div id="ads-container" class="ads-container">
+                <div class="ad-slot">Google AdSense Placeholder</div>
+                <div class="ad-slot">Advertisement Slot 2</div>
+                <div class="ad-slot">Advertisement Slot 3</div>
+            </div>
+        </section>
+
+        <section class="heatmap-section">
+            <h2>Singapore Transaction Heatmap</h2>
+            <p>Red: Most Transactions, Yellow: Medium, White: Least</p>
+            <img src="https://via.placeholder.com/800x600.png?text=Singapore+Transaction+Heatmap" alt="Singapore Transaction Heatmap" class="heatmap-image">
+        </section>
+
+        <section class="feedback-section">
+            <h2>Send Us Your Feedback!</h2>
+            <form action="https://formspree.io/f/mykdgwzn" method="POST" class="feedback-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Feedback</button>
+            </form>
+        </section>
     </div>
     <script src="main.js"></script>
 </body>
