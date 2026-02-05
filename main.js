@@ -1,44 +1,66 @@
-class TotoGenerator extends HTMLElement {
-  constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: 'open' });
-    const wrapper = document.createElement('div');
-    wrapper.setAttribute('class', 'toto-generator');
+document.addEventListener('DOMContentLoaded', () => {
+    const getRecommendationsBtn = document.getElementById('getRecommendations');
+    const travelDatesInput = document.getElementById('travelDates');
+    const travelTimeInput = document.getElementById('travelTime');
+    const travelPreferencesInput = document.getElementById('travelPreferences');
+    const recommendationsOutput = document.getElementById('recommendationsOutput');
 
-    const heading = document.createElement('h2');
-    heading.textContent = 'Your Lucky Numbers:';
+    getRecommendationsBtn.addEventListener('click', () => {
+        const dates = travelDatesInput.value.toLowerCase();
+        const time = travelTimeInput.value.toLowerCase();
+        const preferences = travelPreferencesInput.value.toLowerCase();
 
-    const numbersContainer = document.createElement('div');
-    numbersContainer.setAttribute('class', 'numbers');
+        let recommendations = [];
 
-    const button = document.createElement('button');
-    button.textContent = 'Generate Numbers';
+        // Basic rule-based recommendations for Korea
+        if (preferences.includes('historical') || preferences.includes('history')) {
+            recommendations.push('Gyeongbokgung Palace (Seoul)');
+            recommendations.push('Changdeokgung Palace and Huwon (Secret Garden) (Seoul)');
+            recommendations.push('Jongmyo Shrine (Seoul)');
+        }
+        if (preferences.includes('food') || preferences.includes('local cuisine')) {
+            recommendations.push('Myeongdong Street Food (Seoul)');
+            recommendations.push('Gwangjang Market (Seoul)');
+            recommendations.push('Busan Jagalchi Fish Market (Busan)');
+        }
+        if (preferences.includes('shopping')) {
+            recommendations.push('Myeongdong Shopping Street (Seoul)');
+            recommendations.push('Dongdaemun Design Plaza (DDP) (Seoul)');
+            recommendations.push('Hongdae (Seoul)');
+        }
+        if (preferences.includes('nature') || preferences.includes('scenic')) {
+            recommendations.push('Namsan Seoul Tower (Seoul)');
+            recommendations.push('Jeju Island (nature, beaches)');
+            recommendations.push('Seoraksan National Park (mountains)');
+        }
+        if (preferences.includes('nightlife') || preferences.includes('party')) {
+            recommendations.push('Hongdae (Seoul)');
+            recommendations.push('Gangnam (Seoul)');
+        }
+        if (preferences.includes('modern') || preferences.includes('city')) {
+            recommendations.push('Gangnam District (Seoul)');
+            recommendations.push('Lotte World Tower (Seoul)');
+        }
+        if (preferences.includes('relax') || preferences.includes('spa')) {
+            recommendations.push('Jjimjilbang (Korean Spa) experience');
+            recommendations.push('Bukchon Hanok Village (traditional atmosphere, relaxation)');
+        }
 
-    button.addEventListener('click', () => {
-      this.generateNumbers(numbersContainer);
+        // Default recommendations if no specific preferences match
+        if (recommendations.length === 0) {
+            recommendations.push('Explore Seoul: Visit popular districts like Myeongdong, Hongdae, and Gangnam.');
+            recommendations.push('Try Korean BBQ and street food.');
+            recommendations.push('Consider a day trip to Nami Island or Petite France.');
+            recommendations.push('Experience a traditional Korean Hanok Village.');
+        }
+
+        // Format output
+        let outputHtml = '<ul>';
+        recommendations.forEach(rec => {
+            outputHtml += `<li>${rec}</li>`;
+        });
+        outputHtml += '</ul>';
+
+        recommendationsOutput.innerHTML = outputHtml;
     });
-
-    shadow.appendChild(heading);
-    shadow.appendChild(numbersContainer);
-    shadow.appendChild(button);
-
-    this.generateNumbers(numbersContainer);
-  }
-
-  generateNumbers(container) {
-    container.innerHTML = '';
-    const numbers = new Set();
-    while (numbers.size < 6) {
-      numbers.add(Math.floor(Math.random() * 49) + 1);
-    }
-
-    for (const number of [...numbers].sort((a, b) => a - b)) {
-      const numberElement = document.createElement('div');
-      numberElement.setAttribute('class', 'number');
-      numberElement.textContent = number;
-      container.appendChild(numberElement);
-    }
-  }
-}
-
-customElements.define('toto-generator', TotoGenerator);
+});

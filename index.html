@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO Number Generator</title>
+    <title>Korea Travel Agent</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>TOTO Number Generator</h1>
-    <toto-generator></toto-generator>
+    <div class="container">
+        <h1>Plan Your Trip to Korea!</h1>
+        <img src="https://via.placeholder.com/600x200?text=Korea+Travel" alt="Korea Travel Placeholder" class="hero-image">
+
+        <div class="input-section">
+            <label for="travelDates">Travel Dates:</label>
+            <input type="text" id="travelDates" placeholder="e.g., May 10 - May 17">
+
+            <label for="travelTime">Duration / Time:</label>
+            <input type="text" id="travelTime" placeholder="e.g., 7 days, Morning/Evening">
+
+            <label for="travelPreferences">Travel Preferences:</label>
+            <textarea id="travelPreferences" rows="5" placeholder="e.g., I love historical sites and trying local food, also looking for some nightlife."></textarea>
+
+            <button id="getRecommendations">Get Recommendations</button>
+        </div>
+
+        <div class="recommendations-section">
+            <h2>Our Recommendations:</h2>
+            <div id="recommendationsOutput">
+                <p>Enter your details above and click 'Get Recommendations'!</p>
+            </div>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
