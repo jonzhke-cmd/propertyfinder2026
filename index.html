@@ -33,12 +33,13 @@
                 <option value="3">3 Bedrooms</option>
                 <option value="4">4+ Bedrooms</option>
             </select>
+            <button id="show-signin-modal-btn">Recent Transactions <1km</button>
         </div>
         <div id="property-listings" class="property-listings">
             <!-- Property cards will be injected here by JavaScript -->
         </div>
 
-        <section class="transactions-section">
+        <section class="transactions-section" data-requires-signin="true">
             <h2>Recently Transacted Prices</h2>
             <div id="transactions-list" class="transactions-list">
                 <!-- Transaction items will be injected here by JavaScript -->
@@ -78,6 +79,34 @@
                 <button type="submit" class="submit-button">Send Feedback</button>
             </form>
         </section>
+    </div>
+
+    <!-- Sign-in Modal Structure -->
+    <div id="signin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sign In to Access Transactions</h2>
+            <div id="signin-form">
+                <div class="form-group">
+                    <label for="signin-name">Name:</label>
+                    <input type="text" id="signin-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signin-email">Email:</label>
+                    <input type="email" id="signin-email" required>
+                </div>
+                <button id="request-otp-btn" class="modal-button">Request OTP</button>
+                <p id="signin-message" class="message"></p>
+            </div>
+            <div id="otp-form" style="display: none;">
+                <div class="form-group">
+                    <label for="otp-input">Enter OTP:</label>
+                    <input type="text" id="otp-input" required>
+                </div>
+                <button id="activate-btn" class="modal-button">Activate</button>
+                <p id="otp-message" class="message"></p>
+            </div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

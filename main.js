@@ -132,6 +132,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
 
+    // Sign-in Modal Elements
+    const showSigninModalBtn = document.getElementById('show-signin-modal-btn');
+    const signinModal = document.getElementById('signin-modal');
+    const closeModalBtn = signinModal.querySelector('.close-button');
+    const signinForm = document.getElementById('signin-form');
+    const otpForm = document.getElementById('otp-form');
+    const signinNameInput = document.getElementById('signin-name');
+    const signinEmailInput = document.getElementById('signin-email');
+    const requestOtpBtn = document.getElementById('request-otp-btn');
+    const otpInput = document.getElementById('otp-input');
+    const activateBtn = document.getElementById('activate-btn');
+    const signinMessage = document.getElementById('signin-message');
+    const otpMessage = document.getElementById('otp-message');
+    const transactionsSection = document.querySelector('.transactions-section'); // Get the transactions section
+
+    let isSignedIn = localStorage.getItem('isSignedIn') === 'true'; // Check local storage for sign-in status
+    let mockOtp = '123456'; // Mock OTP for demonstration
+
     // Function to set the theme
     function setTheme(isDarkMode) {
         if (isDarkMode) {
@@ -159,6 +177,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDarkMode = document.body.classList.contains('dark-mode');
         setTheme(!isDarkMode);
     });
+
+    // Modal functions
+    function showModal() {
+        signinModal.style.display = 'block';
+    }
+
+    function hideModal() {
+        signinModal.style.display = 'none';
+        signinMessage.textContent = '';
+        otpMessage.textContent = '';
+        // Reset forms
+        signinForm.style.display = 'block';
+        otpForm.style.display = 'none';
+        signinNameInput.value = '';
+        signinEmailInput.value = '';
+        otpInput.value = '';
+    }
 
     // Helper function to get vote results display string
     function getVoteResultsDisplay(property) {
@@ -316,6 +351,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderTransactions() {
         transactionsList.innerHTML = '';
+        // Only render transactions if the user is signed in
+        if (!isSignedIn) {
+            transactionsSection.style.display = 'none';
+            // Optionally, display a message within the main content area or handle it differently
+            return;
+        } else {
+            transactionsSection.style.display = 'block'; // Show the section if signed in
+        }
+
         transactions.forEach(transaction => {
             const transactionItem = `
                 <div class="transaction-item">
@@ -328,6 +372,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    renderTransactions();
+
+    // Event Listeners for Sign-in Modal
+    showSigninModalBtn.addEventListener('click', showModal);
+    closeModalBtn.addEventListener('click', hideModal);
+    window.addEventListener('click', (event) => {
+        if (event.target === signinModal) {
+            hideModal();
+        }
+    });
+
+    requestOtpBtn.addEventListener('click', () => {
+        const name = signinNameInput.value.trim();
+        const email = signinEmailInput.value.trim();
+
+        if (!name || !email) {
+            signinMessage.textContent = 'Please enter your name and email.';
+            signinMessage.style.color = 'red';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            signinMessage.textContent = 'Please enter a valid email address.';
+            signinMessage.style.color = 'red';
+            return;
+        }
+
+        signinMessage.textContent = `OTP sent to ${email}. Check your inbox. (Mock OTP: ${mockOtp})`;
+        signinMessage.style.color = 'green';
+        signinForm.style.display = 'none';
+        otpForm.style.display = 'block';
+    });
+
+    activateBtn.addEventListener('click', () => {
+        const otp = otpInput.value.trim();
+        if (otp === mockOtp) {
+            isSignedIn = true;
+            localStorage.setItem('isSignedIn', 'true');
+            otpMessage.textContent = 'Account activated successfully!';
+            otpMessage.style.color = 'green';
+            hideModal();
+            renderTransactions(); // Re-render transactions section after sign-in
+        } else {
+            otpMessage.textContent = 'Invalid OTP. Please try again.';
+            otpMessage.style.color = 'red';
+        }
+    });
+
+    // Initial render of transactions based on sign-in status
     renderTransactions();
 });
 
