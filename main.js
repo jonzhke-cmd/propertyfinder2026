@@ -144,11 +144,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function getVoteResultsDisplay(property) {
         const totalVotes = property.goodBuyVotes + property.notGoodBuyVotes;
         if (totalVotes === 0) {
-            return 'Be the first to vote!';
+            return '<div class="vote-meter-container">Be the first to vote!</div>';
         }
-        const goodBuyPercentage = ((property.goodBuyVotes / totalVotes) * 100).toFixed(0);
-        const notGoodBuyPercentage = ((property.notGoodBuyVotes / totalVotes) * 100).toFixed(0);
-        return `Good Buy: ${goodBuyPercentage}% | Not a Good Buy: ${notGoodBuyPercentage}%`;
+        const goodBuyPercentage = totalVotes === 0 ? 0 : ((property.goodBuyVotes / totalVotes) * 100);
+        const notGoodBuyPercentage = totalVotes === 0 ? 0 : ((property.notGoodBuyVotes / totalVotes) * 100);
+
+        return `
+            <div class="vote-meter-container">
+                <div class="vote-meter-bar">
+                    <div class="vote-meter-fill" style="width: ${goodBuyPercentage.toFixed(0)}%;"></div>
+                </div>
+                <div class="vote-meter-labels">
+                    <span>Good: ${goodBuyPercentage.toFixed(0)}%</span>
+                    <span>Not Good: ${notGoodBuyPercentage.toFixed(0)}%</span>
+                </div>
+            </div>
+        `;
     }
 
     function renderProperties(filteredProperties) {

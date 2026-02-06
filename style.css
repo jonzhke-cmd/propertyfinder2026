@@ -313,6 +313,48 @@ body.dark-mode .vote-results {
     color: #adb5bd;
 }
 
+/* Vote Meter Styles */
+.vote-meter-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.vote-meter-bar {
+    width: 100%;
+    background-color: #e9ecef; /* Light background for the meter bar */
+    border-radius: 5px;
+    height: 15px; /* Height of the meter bar */
+    overflow: hidden; /* Ensures fill stays within bounds */
+    margin-bottom: 5px;
+}
+
+body.dark-mode .vote-meter-bar {
+    background-color: #495057;
+}
+
+.vote-meter-fill {
+    height: 100%;
+    background-color: #28a745; /* Green for "Good Buy" */
+    width: 0%; /* Initial width, will be set by JS */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out; /* Smooth transition for width change */
+}
+
+body.dark-mode .vote-meter-fill {
+    background-color: #20c997;
+}
+
+.vote-meter-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+body.dark-mode .vote-meter-labels {
+    color: #adb5bd;
+}
+
 /* Responsive adjustments for filters */
 @media (max-width: 768px) {
     .filters {
