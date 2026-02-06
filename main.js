@@ -5,70 +5,80 @@ document.addEventListener('DOMContentLoaded', () => {
             district: 'D09',
             price: 5000000,
             bedrooms: 4,
-            image: 'https://via.placeholder.com/300x200.png?text=Orchard+Residences+Luxury'
+            image: 'https://via.placeholder.com/300x200.png?text=Orchard+Residences+Luxury',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Orchard+Residences+Floor+Plan'
         },
         {
             name: 'Marina Bay Suites',
             district: 'D01',
             price: 4500000,
             bedrooms: 3,
-            image: 'https://via.placeholder.com/300x200.png?text=Marina+Bay+Waterfront'
+            image: 'https://via.placeholder.com/300x200.png?text=Marina+Bay+Waterfront',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Marina+Bay+Suites+Floor+Plan'
         },
         {
             name: 'The Sail @ Marina Bay',
             district: 'D01',
             price: 2500000,
             bedrooms: 2,
-            image: 'https://via.placeholder.com/300x200.png?text=The+Sail+Skyline+View'
+            image: 'https://via.placeholder.com/300x200.png?text=The+Sail+Skyline+View',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Sail+Floor+Plan'
         },
         {
             name: 'Reflections at Keppel Bay',
             district: 'D04',
             price: 3500000,
             bedrooms: 3,
-            image: 'https://via.placeholder.com/300x200.png?text=Keppel+Bay+Architecture'
+            image: 'https://via.placeholder.com/300x200.png?text=Keppel+Bay+Architecture',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Reflections+Floor+Plan'
         },
         {
             name: 'Skyline @ Orchard Boulevard',
             district: 'D09',
             price: 6000000,
             bedrooms: 4,
-            image: 'https://via.placeholder.com/300x200.png?text=Orchard+Boulevard+Highrise'
+            image: 'https://via.placeholder.com/300x200.png?text=Orchard+Boulevard+Highrise',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Skyline+Floor+Plan'
         },
         {
             name: 'The Interlace',
             district: 'D04',
             price: 1800000,
             bedrooms: 2,
-            image: 'https://via.placeholder.com/300x200.png?text=The+Interlace+Unique'
+            image: 'https://via.placeholder.com/300x200.png?text=The+Interlace+Unique',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Interlace+Floor+Plan'
         },
         {
             name: 'd\'Leedon',
             district: 'D10',
             price: 2200000,
             bedrooms: 3,
-            image: 'https://via.placeholder.com/300x200.png?text=d\'Leedon+Modern'
+            image: 'https://via.placeholder.com/300x200.png?text=d\'Leedon+Modern',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=d\'Leedon+Floor+Plan'
         },
         {
             name: 'Corals at Keppel Bay',
             district: 'D04',
             price: 2800000,
             bedrooms: 2,
-            image: 'https://via.placeholder.com/300x200.png?text=Corals+Keppel+Waterfront'
+            image: 'https://via.placeholder.com/300x200.png?text=Corals+Keppel+Waterfront',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Corals+Floor+Plan'
         },
         {
             name: 'Guoco Tower',
             district: 'D02',
             price: 3200000,
             bedrooms: 1,
-            image: 'https://via.placeholder.com/300x200.png?text=Guoco+Tower+Cityscape'
+            image: 'https://via.placeholder.com/300x200.png?text=Guoco+Tower+Cityscape',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Guoco+Tower+Floor+Plan'
         },
         {
             name: 'Wallich Residence',
             district: 'D02',
             price: 8000000,
             bedrooms: 5,
-            image: 'https://via.placeholder.com/300x200.png?text=Wallich+Residence+Penthouse'
+            image: 'https://via.placeholder.com/300x200.png?text=Wallich+Residence+Penthouse',
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Wallich+Residence+Floor+Plan'
         }
     ];
 
@@ -121,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p><strong>District:</strong> ${property.district}</p>
                         <p><strong>Price:</strong> S$${property.price.toLocaleString()}</p>
                         <p><strong>Bedrooms:</strong> ${property.bedrooms}</p>
+                        <a href="${property.floorPlan}" download="${property.name.replace(/\s/g, '_')}_FloorPlan.png" class="download-button">Download Floor Plan</a>
                     </div>
                 </div>
             `;

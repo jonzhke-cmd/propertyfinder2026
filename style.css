@@ -204,6 +204,35 @@ body.dark-mode .property-details p strong {
     color: #e0e0e0;
 }
 
+.download-button {
+    display: block; /* Make it a block element to take full width */
+    width: fit-content;
+    padding: 10px 15px;
+    margin-top: 15px; /* Space from other details */
+    background-color: #28a745; /* A success-green color */
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline from link */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.download-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+body.dark-mode .download-button {
+    background-color: #20c997; /* Lighter green for dark mode */
+}
+
+body.dark-mode .download-button:hover {
+    background-color: #17a2b8; /* A teal-ish color on hover for dark mode */
+}
+
 /* Responsive adjustments for filters */
 @media (max-width: 768px) {
     .filters {
