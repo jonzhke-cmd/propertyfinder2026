@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 5000000,
             bedrooms: 4,
             image: 'https://via.placeholder.com/300x200.png?text=Orchard+Residences+Luxury',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Orchard+Residences+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Orchard+Residences+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Marina Bay Suites',
@@ -14,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 4500000,
             bedrooms: 3,
             image: 'https://via.placeholder.com/300x200.png?text=Marina+Bay+Waterfront',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Marina+Bay+Suites+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Marina+Bay+Suites+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'The Sail @ Marina Bay',
@@ -22,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 2500000,
             bedrooms: 2,
             image: 'https://via.placeholder.com/300x200.png?text=The+Sail+Skyline+View',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Sail+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Sail+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Reflections at Keppel Bay',
@@ -30,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 3500000,
             bedrooms: 3,
             image: 'https://via.placeholder.com/300x200.png?text=Keppel+Bay+Architecture',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Reflections+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Reflections+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Skyline @ Orchard Boulevard',
@@ -38,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 6000000,
             bedrooms: 4,
             image: 'https://via.placeholder.com/300x200.png?text=Orchard+Boulevard+Highrise',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Skyline+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Skyline+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'The Interlace',
@@ -46,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 1800000,
             bedrooms: 2,
             image: 'https://via.placeholder.com/300x200.png?text=The+Interlace+Unique',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Interlace+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=The+Interlace+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'd\'Leedon',
@@ -54,7 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 2200000,
             bedrooms: 3,
             image: 'https://via.placeholder.com/300x200.png?text=d\'Leedon+Modern',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=d\'Leedon+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=d\'Leedon+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Corals at Keppel Bay',
@@ -62,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 2800000,
             bedrooms: 2,
             image: 'https://via.placeholder.com/300x200.png?text=Corals+Keppel+Waterfront',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Corals+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Corals+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Guoco Tower',
@@ -70,7 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 3200000,
             bedrooms: 1,
             image: 'https://via.placeholder.com/300x200.png?text=Guoco+Tower+Cityscape',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Guoco+Tower+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Guoco+Tower+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         },
         {
             name: 'Wallich Residence',
@@ -78,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price: 8000000,
             bedrooms: 5,
             image: 'https://via.placeholder.com/300x200.png?text=Wallich+Residence+Penthouse',
-            floorPlan: 'https://via.placeholder.com/600x400.png?text=Wallich+Residence+Floor+Plan'
+            floorPlan: 'https://via.placeholder.com/600x400.png?text=Wallich+Residence+Floor+Plan',
+            goodBuyVotes: 0,
+            notGoodBuyVotes: 0
         }
     ];
 
@@ -120,11 +140,22 @@ document.addEventListener('DOMContentLoaded', () => {
         setTheme(!isDarkMode);
     });
 
+    // Helper function to get vote results display string
+    function getVoteResultsDisplay(property) {
+        const totalVotes = property.goodBuyVotes + property.notGoodBuyVotes;
+        if (totalVotes === 0) {
+            return 'Be the first to vote!';
+        }
+        const goodBuyPercentage = ((property.goodBuyVotes / totalVotes) * 100).toFixed(0);
+        const notGoodBuyPercentage = ((property.notGoodBuyVotes / totalVotes) * 100).toFixed(0);
+        return `Good Buy: ${goodBuyPercentage}% | Not a Good Buy: ${notGoodBuyPercentage}%`;
+    }
+
     function renderProperties(filteredProperties) {
         propertyListings.innerHTML = '';
         filteredProperties.forEach(property => {
             const propertyCard = `
-                <div class="property-card">
+                <div class="property-card" data-property-name="${property.name}">
                     <img src="${property.image}" alt="${property.name}">
                     <div class="property-details">
                         <h2>${property.name}</h2>
@@ -132,6 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p><strong>Price:</strong> S$${property.price.toLocaleString()}</p>
                         <p><strong>Bedrooms:</strong> ${property.bedrooms}</p>
                         <a href="${property.floorPlan}" download="${property.name.replace(/\s/g, '_')}_FloorPlan.png" class="download-button">Download Floor Plan</a>
+                        <div class="voting-section">
+                            <h3>Is it a Good Buy?</h3>
+                            <button class="vote-button good-buy" data-vote="good" data-property="${property.name}">Good Buy</button>
+                            <button class="vote-button not-good-buy" data-vote="not-good" data-property="${property.name}">Not a Good Buy</button>
+                            <div class="vote-results" id="vote-results-${property.name.replace(/\s/g, '-')}" style="margin-top: 10px;">
+                                ${getVoteResultsDisplay(property)}
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
@@ -180,6 +219,33 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterProperties);
     priceRangeSelect.addEventListener('change', filterProperties);
     bedroomsSelect.addEventListener('change', filterProperties);
+
+    // Function to handle voting
+    function handleVote(propertyName, voteType) {
+        const property = properties.find(p => p.name === propertyName);
+        if (property) {
+            if (voteType === 'good') {
+                property.goodBuyVotes++;
+            } else if (voteType === 'not-good') {
+                property.notGoodBuyVotes++;
+            }
+            // Update the display for this specific property
+            const voteResultsElement = document.getElementById(`vote-results-${propertyName.replace(/\s/g, '-')}`);
+            if (voteResultsElement) {
+                voteResultsElement.innerHTML = getVoteResultsDisplay(property);
+            }
+        }
+    }
+
+    // Event listener for voting buttons using event delegation
+    propertyListings.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList.contains('vote-button')) {
+            const propertyName = target.dataset.property;
+            const voteType = target.dataset.vote;
+            handleVote(propertyName, voteType);
+        }
+    });
 
     // Initial render
     renderProperties(properties);

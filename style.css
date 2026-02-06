@@ -233,6 +233,86 @@ body.dark-mode .download-button:hover {
     background-color: #17a2b8; /* A teal-ish color on hover for dark mode */
 }
 
+/* Voting Section Styles */
+.voting-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+}
+
+body.dark-mode .voting-section {
+    border-top-color: #495057;
+}
+
+.voting-section h3 {
+    font-size: 1.2rem;
+    color: #343a40;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body.dark-mode .voting-section h3 {
+    color: #e0e0e0;
+}
+
+.vote-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0 5px;
+}
+
+.vote-button.good-buy {
+    background-color: #28a745; /* Green for good buy */
+    color: #ffffff;
+}
+
+.vote-button.good-buy:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.vote-button.not-good-buy {
+    background-color: #dc3545; /* Red for not good buy */
+    color: #ffffff;
+}
+
+.vote-button.not-good-buy:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+body.dark-mode .vote-button.good-buy {
+    background-color: #20c997;
+}
+
+body.dark-mode .vote-button.good-buy:hover {
+    background-color: #1a8b6e;
+}
+
+body.dark-mode .vote-button.not-good-buy {
+    background-color: #e4606d;
+}
+
+body.dark-mode .vote-button.not-good-buy:hover {
+    background-color: #c23342;
+}
+
+.vote-results {
+    margin-top: 15px;
+    font-size: 1.05rem;
+    color: #495057;
+    font-weight: bold;
+}
+
+body.dark-mode .vote-results {
+    color: #adb5bd;
+}
+
 /* Responsive adjustments for filters */
 @media (max-width: 768px) {
     .filters {
