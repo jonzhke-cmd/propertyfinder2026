@@ -231,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p><strong>Tenure:</strong> ${property.tenure}</p>
                         <p><strong>Developer:</strong> ${property.developer}</p>
                         <a href="${property.floorPlan}" download="${property.name.replace(/\s/g, '_')}_FloorPlan.png" class="download-button">Download Floor Plan</a>
+                        <button class="show-project-transactions-btn modal-button" data-property="${property.name}">Show Recent Transactions</button>
                         <div class="voting-section">
                             <h3>Is it a Good Buy?</h3>
                             <button class="vote-button good-buy" data-vote="good" data-property="${property.name}">Good Buy</button>
@@ -312,6 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const propertyName = target.dataset.property;
             const voteType = target.dataset.vote;
             handleVote(propertyName, voteType);
+        } else if (target.classList.contains('show-project-transactions-btn')) {
+            if (!isSignedIn) {
+                showModal();
+            } else {
+                const propertyName = target.dataset.property;
+                const projectTransactions = transactions.filter(t => t.propertyName === propertyName);
+                renderTransactions(projectTransactions);
+            }
         }
     });
 
@@ -323,33 +332,38 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'The Interlace',
             date: '2026-01-15',
-            price: 1750000
+            price: 1750000,
+            propertyName: 'The Interlace'
         },
         {
-            name: 'Orchard Residences',
+            name: 'Orchard Residences Sale',
             date: '2026-01-10',
-            price: 4900000
+            price: 4900000,
+            propertyName: 'Orchard Residences'
         },
         {
-            name: 'Marina Bay Suites',
+            name: 'Marina Bay Suites Sale',
             date: '2026-01-05',
-            price: 4450000
+            price: 4450000,
+            propertyName: 'Marina Bay Suites'
         },
         {
-            name: 'Reflections at Keppel Bay',
+            name: 'Reflections at Keppel Bay Sale',
             date: '2025-12-28',
-            price: 3400000
+            price: 3400000,
+            propertyName: 'Reflections at Keppel Bay'
         },
         {
-            name: 'd\'Leedon',
+            name: 'd\'Leedon Rental',
             date: '2025-12-20',
-            price: 2150000
+            price: 2150000,
+            propertyName: 'd\'Leedon'
         }
     ];
 
     const transactionsList = document.getElementById('transactions-list');
 
-    function renderTransactions() {
+    function renderTransactions(transactionsToRender = transactions) { // Accept optional argument
         transactionsList.innerHTML = '';
         // Only render transactions if the user is signed in
         if (!isSignedIn) {
@@ -360,7 +374,12 @@ document.addEventListener('DOMContentLoaded', () => {
             transactionsSection.style.display = 'block'; // Show the section if signed in
         }
 
-        transactions.forEach(transaction => {
+        if (transactionsToRender.length === 0) {
+            transactionsList.innerHTML = '<p>No transactions found for this property.</p>';
+            return;
+        }
+
+        transactionsToRender.forEach(transaction => {
             const transactionItem = `
                 <div class="transaction-item">
                     <h3>${transaction.name}</h3>
